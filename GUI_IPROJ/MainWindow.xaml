@@ -1,0 +1,130 @@
+﻿<Window x:Class="GUI_IPROJ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:GUI_IPROJ"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="560" Width="700">
+
+
+    <Grid>
+
+        <Border CornerRadius="0 0 10 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="DeepSkyBlue" Offset="0"/>
+                    <GradientStop Color="PowderBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <Canvas>
+            <Polygon Points="0,20 200,100 0,200" Fill="DeepSkyBlue"/>
+            <Polygon Points="180,350 250,220 150,280" Fill="DeepSkyBlue"/>
+            <Polygon Points="20,400 90,360 75,480" Fill="DeepSkyBlue"/>
+            <Polygon Points="300,510 290,520 310,530" Fill="DeepSkyBlue"/>
+            <Polygon Points="290,540 260,545 275,550" Fill="DeepSkyBlue"/>
+            <Polygon Points="250,350 200,400 290,370" Fill="DeepSkyBlue"/>
+            <Polygon Points="180,500 220,525 220,510" Fill="DeepSkyBlue"/>
+            <Polygon Points="290,460 280,495 250,470" Fill="DeepSkyBlue"/>
+            <Ellipse Margin="20 230 0 0" Width="20" Height="20" Fill="DeepSkyBlue"/>
+
+            <Polygon Points="650,550 600,530 650,540" Fill="DeepSkyBlue"/>
+            <Polygon Points="700,550 690,520 650,500" Fill="DeepSkyBlue"/>
+            <Polygon Points="350,350 400,300 350,250" Fill="DeepSkyBlue"/>
+
+            <Polygon Points="250,100 350,50 400,100" Fill="DeepSkyBlue"/>
+            <Polygon Points="450,200 550,250 600,220" Fill="DeepSkyBlue"/>
+
+
+        </Canvas>
+
+
+
+        <StackPanel  Orientation="Vertical"  >
+            <TextBlock Text="STUDENT REGISTRATION SYSTEM" Style="{StaticResource Titletext}"
+                           Margin="0 30 0 0" Width="430" Foreground="DarkMagenta" />
+
+            <StackPanel Margin=" 110 20 0 0"  HorizontalAlignment="Left"   
+                            Background="Transparent" Orientation="Horizontal" Height="33" Width="508" >
+                <TextBlock Text="First Name" Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="118" />
+                <TextBlock Text="Last Name" Foreground="#FF4A4F51"   Style="{StaticResource ListView}" Width="121" />
+                <TextBlock Text="Age" Foreground="#FF4A4F51"  Style="{StaticResource ListView}"  Width="38" />
+                <TextBlock Text="Date Of Birth"  Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="90" />
+                <TextBlock Text="GPA" Foreground="#FF4A4F51"  Style="{StaticResource ListView}" Width="46" />
+            </StackPanel>
+
+            <ListView x:Name="Listview" Background="Transparent" Height="258" ItemsSource="{Binding Users, UpdateSourceTrigger=PropertyChanged}"
+                     SelectedItem="{Binding SelectedUser, UpdateSourceTrigger=PropertyChanged}" Width="558" BorderBrush="{x:Null}" SelectionChanged="Listview_SelectionChanged"  >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Border CornerRadius="20" Margin="2" Width="530" Height="37" Background="#FFE5E5E5" >
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#FFBBBBBB" />
+                            </Border.Effect>
+                            <StackPanel Width="600" Orientation="Horizontal" >
+                                <Image Width="35" Height="35" Source="{Binding Image}" />
+                                <TextBlock Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="118" />
+                                <TextBlock Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="118" />
+                                <TextBlock Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="38" />
+                                <TextBlock Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" Width="96" />
+                                <TextBlock Text="{Binding GPA, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource ListView}" />
+                                <TextBlock Text="{Binding Gender, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ListView}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Content="Add"  Command="{Binding AddNewStudentCommand}"  Style="{StaticResource FuncButton}"  
+                            Width="100" Height="25"
+                            FontFamily="times new roman" FontSize="14"  Background="DarkMagenta">
+                        
+                    </Button>
+                    <Button Content="Edit" Command="{Binding EditStudentCommand}"  Style="{StaticResource FuncButton}" 
+                           Width="100" Height="25"
+                            FontFamily="times new roman" FontSize="14" Background="MediumPurple">
+                        
+                    </Button>
+                    <Button Content="Delete" Command="{Binding DeleteCommand}"  Style="{StaticResource FuncButton}" 
+                            Width="100" Height="25"
+                            FontFamily="times new roman" FontSize="14"  Background="RoyalBlue">
+                        
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Height="142" Width="492" RenderTransformOrigin="0.5,0.5" Opacity="0.3" Margin="250 0 0 0">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-36.616"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+
+                <Border Width="346"
+                            Height="35"
+                            Background="#FFD12582"
+                            CornerRadius="20"/>
+                <Border Width="295"
+                            Height="40"
+                            Background="#FF56C5FF"
+                            CornerRadius="20"/>
+                <Border Width="262"
+                            Height="35"
+                            Background="#FF0059FF"
+                            CornerRadius="20"/>
+            </StackPanel>
+
+        </StackPanel>
+
+
+    </Grid>
+</Window>
